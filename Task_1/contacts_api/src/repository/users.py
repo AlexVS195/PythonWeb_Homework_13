@@ -25,3 +25,12 @@ async def create_user(body: UserModel, db: Session) -> User:
 async def update_token(user: User, token: str | None, db: Session) -> None:
     user.refresh_token = token
     db.commit()
+
+
+async def confirm_email(token: str, db: Session):
+    user = db.query(User).filter(User.email == token).first()
+    if user:
+        user.email_verified = True
+        db.commit()
+        return True
+    return False
