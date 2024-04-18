@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Мета, стилі та інші теги заголовка -->
+</head>
+<body>
+    <h1>Quotes with Tag: {{ tag.name }}</h1>
+    <ul>
+        {% for quote in quotes %}
+            <li>{{ quote.text }}</li>
+        {% empty %}
+            <li>No quotes found with this tag</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

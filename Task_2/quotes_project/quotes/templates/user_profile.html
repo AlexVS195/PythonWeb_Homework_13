@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>User Profile</h1>
+    <p>Welcome, {{ user.username }}!</p>
+    <p><a href="{% url 'home' %}">Home</a></p>
+    <p><a href="{% url 'add_author' %}">Add Author</a></p>
+    <p><a href="{% url 'add_quote' %}">Add Quote</a></p>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrape Quotes</title>
+</head>
+<body>
+    <h1>Scrape Quotes</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="url">URL address:</label>
+        <input type="text" id="url" name="url">
+        <button type="submit">scrape_quotes</button>
+    </form>
+</body>
+</html>
+

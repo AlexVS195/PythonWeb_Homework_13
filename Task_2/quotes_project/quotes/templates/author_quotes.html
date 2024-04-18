@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ author.name }} цитати</title>
+</head>
+<body>
+    <h1>{{ author.name }} цитати</h1>
+    <ul>
+        {% for quote in quotes %}
+            <li>{{ quote.text }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

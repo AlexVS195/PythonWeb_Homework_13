@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        .button-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .button {
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            font-size: 16px;
+        }
+        
+        .button:hover {
+            background-color: #45a049;
+        }
+        
+        .welcome-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .tag-list {
+            position: fixed;
+            top: 30%; 
+            right: 20px; 
+            transform: translateY(10%);
+        }
+
+        .tag-list h2 {
+            margin-bottom: 5px;
+        }
+
+        .tag-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tag-list li {
+            margin-bottom: 5px;
+        }
+
+        .tag-list li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .tag-list li a:hover {
+            color: #4CAF50;
+        }
+
+        .top-tags {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <a href="{% url 'login' %}" class="button">Sign in</a>
+        <a href="{% url 'register' %}" class="button">Log on</a>
+        <a href="{% url 'logout' %}" class="button">Exit</a>
+        <a href="{% url 'quote_list' %}" class="button">All Quotes</a>
+        <a href="{% url 'author_list' %}" class="button">Authors</a>
+    </div>
+    <div class="welcome-message">
+        <p>Welcome! Here you can view quotes from various authors.</p>
+    </div>
+    <div class="tag-list">
+        <h2>Tags:</h2>
+        <p>Total Tags: {{ tags.count }}</p>
+        <ul>
+            {% for tag in tags %}
+                <li><a href="{% url 'quotes_by_tag' tag.id %}">{{ tag.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="top-tags">
+        <h2>Top Ten tags:</h2>
+        <ul>
+            {% for tag in top_tags %}
+                <li>{{ tag.name }} ({{ tag.quotes.count }} quotes)</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
